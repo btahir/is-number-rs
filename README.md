@@ -20,6 +20,10 @@ npm install is-number-rs
 
 ## Usage
 
+### With a bundler (Vite, webpack, Next.js, etc.)
+
+Just import and use - the bundler handles WASM loading automatically:
+
 ```javascript
 import { is_number } from 'is-number-rs';
 
@@ -34,6 +38,18 @@ is_number("   ");       // false - neither is whitespace
 is_number("abc");       // false - letters aren't numbers (controversial take)
 is_number("12px");      // false - CSS units don't count
 ```
+
+### With Node.js (no bundler)
+
+Node.js needs the experimental WASM modules flag:
+
+```bash
+node --experimental-wasm-modules your-script.js
+```
+
+### Browser (via CDN)
+
+Works in modern browsers with ES module support and a bundler, or via tools like esm.sh.
 
 ## Features
 
@@ -69,6 +85,16 @@ pub fn is_number(value: &str) -> bool {
 ```
 
 That's it. That's the whole thing. 13 lines of Rust doing what JavaScript has needed 60 million weekly downloads to figure out.
+
+## Compatibility
+
+| Environment | Status |
+|-------------|--------|
+| Vite, webpack, Rollup, esbuild | Works out of the box |
+| Next.js, Nuxt, SvelteKit | Works out of the box |
+| Node.js | Requires `--experimental-wasm-modules` flag |
+| Bun | Not yet supported (Bun's WASM ESM loader is incompatible) |
+| Browsers (bundled) | Works out of the box |
 
 ## Contributing
 
