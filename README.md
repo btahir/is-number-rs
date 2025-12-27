@@ -1,5 +1,7 @@
 # is-number-rs
 
+[![npm](https://img.shields.io/npm/v/is-number-rs)](https://www.npmjs.com/package/is-number-rs)
+
 > Because JavaScript's type coercion wasn't confusing enough, we decided to solve it with WebAssembly.
 
 A blazingly fast, memory-safe, fearlessly concurrent way to check if a string is a number. Written in Rust, compiled to WASM, delivered to npm. The triforce of modern web development.
